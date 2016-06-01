@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
   <groupId>com.mugarov</groupId>
-  <artifactId>Qancellor</artifactId>
+  <artifactId>qancellor</artifactId>
   <versioning>
     <release>v0.0.1</release>
     <versions>
       <version>v0.0.1</version>
     </versions>
-    <lastUpdated>20160601102056</lastUpdated>
+    <lastUpdated>20160601103355</lastUpdated>
   </versioning>
 </metadata>
