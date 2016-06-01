@@ -57,6 +57,7 @@ public class QancellorHead {
         }
         else{
             this.frame.setVisible(visible);
+            this.frame.setState(Frame.NORMAL);
             this.frame.requestFocus();
         }
     }
