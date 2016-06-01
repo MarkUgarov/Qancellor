@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
@@ -28,11 +29,16 @@ public class Frame extends JFrame{
     private final int minInitHeight = 200;
     private final int minInitWidth = 200;
     
-    public Frame(){
+    public Frame(WindowListener listener, boolean visible){
         super();
         this.sizeSet = false;
         this.setBackground(Color.BLACK);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        if(listener == null){
+            this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        }
+        else{
+            this.addWindowListener(listener);
+        }
         this.setTitle("Qancellor");
         this.setLayout(new BorderLayout());
         this.tablePanel = new TablePanel();
@@ -44,7 +50,11 @@ public class Frame extends JFrame{
         this.watermark = new GlassPane(this.getGlassPane());
         this.setGlassPane(this.watermark);
         
-        this.setVisible(true);
+        this.setVisible(visible);
+    }
+    
+    public Frame(){
+        this(null, true);
     }
     
     public void initTablePanel(ArrayList<Entry> entries, ActionListener cancelListener){
