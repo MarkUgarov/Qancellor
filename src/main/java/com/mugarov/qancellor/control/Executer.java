@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.qancellor.control;
+package com.mugarov.qancellor.control;
 
-import com.mycompany.qancellor.CommandPool;
+import com.mugarov.qancellor.CommandPool;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.qancellor.view;
+package com.mugarov.qancellor.view;
 
-import com.mycompany.qancellor.model.Entry;
-import com.mycompany.qancellor.view.tabletools.ButtonEditor;
-import com.mycompany.qancellor.view.tabletools.ButtonRenderer;
+import com.mugarov.qancellor.model.Entry;
+import com.mugarov.qancellor.view.tabletools.ButtonEditor;
+import com.mugarov.qancellor.view.tabletools.ButtonRenderer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionListener;

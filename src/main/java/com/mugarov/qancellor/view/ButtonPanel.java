@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.qancellor.view;
+package com.mugarov.qancellor.view;
 
-import com.mycompany.qancellor.control.ManListener;
+import com.mugarov.qancellor.control.ManListener;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.qancellor;
+package com.mugarov.qancellor;
 
-import com.mycompany.qancellor.control.QancellorHead;
+import com.mugarov.qancellor.control.QancellorHead;
 
 /**
  *

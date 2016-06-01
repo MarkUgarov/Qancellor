@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.qancellor.control;
+package com.mugarov.qancellor.control;
 
-import com.mycompany.qancellor.view.Frame;
+import com.mugarov.qancellor.view.Frame;
 import java.awt.event.WindowListener;
 import java.util.Timer;
 
@@ -57,8 +57,8 @@ public class QancellorHead {
         }
         else{
             this.frame.setVisible(visible);
+            this.frame.requestFocus();
         }
-        
     }
     
     

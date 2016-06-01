@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.qancellor.control;
+package com.mugarov.qancellor.control;
 
-import com.mycompany.qancellor.model.Entry;
-import com.mycompany.qancellor.model.EntryParser;
-import com.mycompany.qancellor.view.Frame;
+import com.mugarov.qancellor.model.Entry;
+import com.mugarov.qancellor.model.EntryParser;
+import com.mugarov.qancellor.view.Frame;
 import java.util.ArrayList;
 import java.util.TimerTask;
 
