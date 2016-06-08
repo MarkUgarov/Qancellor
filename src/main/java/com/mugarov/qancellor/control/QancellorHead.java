@@ -38,7 +38,7 @@ public class QancellorHead {
         this.frame = new Frame(this.windowListener, this.initVisibility);
         this.timer = new Timer();
         this.watcher = new StatusWatcher(this.frame);
-        this.timer.schedule(this.watcher, 0, 2000);
+        this.timer.schedule(this.watcher, 0, 5000);
     }
     
     
@@ -56,6 +56,7 @@ public class QancellorHead {
             this.start();
         }
         else{
+            this.watcher.runCycle();
             this.frame.setVisible(visible);
             this.frame.setState(Frame.NORMAL);
             this.frame.requestFocus();

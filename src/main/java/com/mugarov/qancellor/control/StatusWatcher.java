@@ -32,7 +32,7 @@ public class StatusWatcher extends TimerTask{
     }
     
     public void runCycle(){
-        System.out.println("Running Watcher Cycle");
+//        System.out.println("Running Watcher Cycle");
         this.runs = true;
         this.frame.setButtonsEnabled(false);
         this.parse();
@@ -86,30 +86,7 @@ public class StatusWatcher extends TimerTask{
     
     private void parse(){
         String status = this.executer.getStatusReport();
-        // for testing
-        if(status == null || status.isEmpty()){
-                //    job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID 
-                //-----------------------------------------------------------------------------------------------------------------
-                //5112539 1.05000 data0_Newb mugarov      r     05/16/2016 16:56:44 all.q@fuc01008.CeBiTec.Uni-Bie     8 
-            StringBuilder testBuilder = new StringBuilder();
-            testBuilder.append("job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID ");
-            testBuilder.append("\n");
-            testBuilder.append("-----------------------------------------------------------------------------------------------------------------");
-            testBuilder.append("\n");
-            testBuilder.append("5112539 1.05000 data0_Newb mugarov      r     05/16/2016 16:56:44 all.q@fuc01008.CeBiTec.Uni-Bie     8 ");
-            status = testBuilder.toString();
-        }
-        
-        // not for testing
         this.entries = EntryParser.toEntryList(status);
-        
-        // for testing
-        if(this.entries.isEmpty()){
-            Entry entry1 = new Entry("TestID 1","TestPriority 1","TestName 1","TestUser 1 ","TestState 1","TestDate 1", "TestTime 1", "TestQueue 1", "TestSlots 1","");
-            this.entries.add(entry1);
-            Entry entry2 = new Entry("TestID 2","TestPriority 2","TestName 2","TestUser 2","TestState 2","TestDate 2", "TestTime 2", "TestQueue 2", "TestSlots 2","");
-            this.entries.add(entry2);
-        }
     }
     
     public boolean cancel(String id){
