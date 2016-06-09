@@ -89,7 +89,7 @@ public class TablePanel extends JPanel {
     
     public void addLine(Entry entry){
         if(entry == null){
-//            System.out.println("Entry is null");
+            System.out.println("Entry is null");
             return;
         }
         else{
@@ -123,8 +123,11 @@ public class TablePanel extends JPanel {
     }
 
     public void deleteLine(int index) {
-        System.out.println("Removing: "+this.entries.get(index).getID());
-        this.entries.remove(index);
+//        System.out.println("Removing: "+this.entries.get(index).getID());
+        if(index<this.entries.size()){
+            this.entries.remove(index);
+        }
+        
         if(index<this.tableModel.getRowCount()){
             this.tableModel.removeRow(index);
 

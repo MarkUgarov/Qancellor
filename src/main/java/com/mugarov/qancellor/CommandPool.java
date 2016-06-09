@@ -11,6 +11,6 @@ package com.mugarov.qancellor;
  */
 public abstract class CommandPool {
     
-    public static final String GET_QSTAT = "qstat";
-    public static final String DELETE_PROCESS = "qdel";
+    public static final String[] GET_QSTAT = new String[]{"qstat", "-xml"};
+    public static final String[] DELETE_PROCESS = new String[]{"qdel"};
 }

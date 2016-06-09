@@ -9,6 +9,7 @@ import com.mugarov.qancellor.CommandPool;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,26 +20,29 @@ import java.util.logging.Logger;
 public class Executer {
     private final String home = System.getProperty("user.home");
     private final String lineSeparator = System.getProperty("line.separator");
-    private ProcessBuilder processBuilder;
-    private Process process;
+    private ProcessBuilder statusBuilder;
+    private ProcessBuilder cancelBuilder;
+    private Process statusProcess;
+    private Process cancelProcess;
     
     public Executer(){
         
     }
     
     public String getStatusReport(){
-        this.processBuilder = new ProcessBuilder(CommandPool.GET_QSTAT);
+        this.statusBuilder = new ProcessBuilder(CommandPool.GET_QSTAT);
         try {
-            this.process = this.processBuilder.start();
+            this.statusProcess = this.statusBuilder.start();
         } catch (IOException ex) {
             Logger.getLogger(Executer.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            this.process.waitFor();
+//            System.out.println(this.statusBuilder.command());
+            this.statusProcess.waitFor();
         } catch (InterruptedException ex) {
             Logger.getLogger(Executer.class.getName()).log(Level.SEVERE, null, ex);
         }
-        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(statusProcess.getInputStream()));
         StringBuilder builder = new StringBuilder();
         String line = null;
         try {
@@ -53,15 +57,20 @@ public class Executer {
     }
     
     public boolean cancel(String id){
-        this.processBuilder = new ProcessBuilder(CommandPool.DELETE_PROCESS, id);
+        String del[] = new String[CommandPool.DELETE_PROCESS.length+1];
+        System.arraycopy(CommandPool.DELETE_PROCESS, 0, del, 0, CommandPool.DELETE_PROCESS.length);
+        del[del.length-1] = id;
+//        System.out.println("Trying to delete "+id+" with command "+Arrays.deepToString(del));
+        this.cancelBuilder = new ProcessBuilder(del);
         try {
-            this.process = this.processBuilder.start();
+//            System.out.println(this.cancelBuilder.command());
+            this.cancelProcess = this.cancelBuilder.start();
         } catch (IOException ex) {
             Logger.getLogger(Executer.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         try {
-            this.process.waitFor();
+            this.cancelProcess.waitFor();
         } catch (InterruptedException ex) {
             Logger.getLogger(Executer.class.getName()).log(Level.SEVERE, null, ex);
             return false;

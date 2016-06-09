@@ -62,13 +62,15 @@ public class StatusWatcher extends TimerTask{
         while(index < this.frame.getContent().size()){
 //            System.out.println("\tContent on index "+index+" is "+this.frame.getContent().get(index).getID());
             if(!this.entries.contains(this.frame.getContent().get(index))){
-//                System.out.println("\tRemoving "+this.frame.getContent().get(index));
+//                System.out.println("\tRemoving "+this.frame.getContent().get(index).getID());
                 this.frame.removeValue(index);
             }
             else{
+//                System.out.println("\tDo not remove "+this.frame.getContent().get(index).getID());
                 index++;
             }
         }
+//        this.frame.printTableContent();
         this.frame.updateUIs();
 //        System.out.println("END check");
 //        this.frame.printTableContent();
@@ -86,7 +88,10 @@ public class StatusWatcher extends TimerTask{
     
     private void parse(){
         String status = this.executer.getStatusReport();
-        this.entries = EntryParser.toEntryList(status);
+//        this.entries = EntryParser.simpleToEntryList(status);
+        this.entries = EntryParser.xmlToEntryList(status);
+            
+
     }
     
     public boolean cancel(String id){
