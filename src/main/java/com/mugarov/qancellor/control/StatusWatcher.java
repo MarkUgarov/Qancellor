@@ -33,6 +33,9 @@ public class StatusWatcher extends TimerTask{
     
     public void runCycle(){
 //        System.out.println("Running Watcher Cycle");
+        if(runs){
+            return;
+        }
         this.runs = true;
         this.frame.setButtonsEnabled(false);
         this.parse();
