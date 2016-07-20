@@ -33,6 +33,7 @@ public class TablePanel extends JPanel {
     private Object[][] values;
     
     private boolean enabled;
+    private ActionListener cancelListener;
     
    public TablePanel(){
         this.setBackground(Color.red);
@@ -53,9 +54,10 @@ public class TablePanel extends JPanel {
     
     public void setValues(ArrayList<Entry> entries, ActionListener cancelListener){
         this.entries = new ArrayList<>(entries);
+        this.cancelListener = cancelListener;
         boolean add = (this.table == null);
         if(entries != null){
-            values = new Object[entries.size()][Entry.SIZE+1];
+            this.values = new Object[entries.size()][Entry.SIZE+1];
             int index = 0;
             
             for(Entry entry: entries){
@@ -85,6 +87,10 @@ public class TablePanel extends JPanel {
         this.scroll.setBackground(Color.BLUE);
         this.setBackground(Color.GREEN);
         this.updateUI();
+    }
+    
+    private void resetValues(){
+        this.setValues(this.entries, this.cancelListener);
     }
     
     public void addLine(Entry entry){
@@ -127,9 +133,14 @@ public class TablePanel extends JPanel {
         if(index<this.entries.size()){
             this.entries.remove(index);
         }
-        
+
         if(index<this.tableModel.getRowCount()){
-            this.tableModel.removeRow(index);
+            try{
+                this.tableModel.removeRow(index);
+            }
+            catch(IndexOutOfBoundsException e){
+                this.resetValues();
+            }
 
         }
 //        this.printContent();
