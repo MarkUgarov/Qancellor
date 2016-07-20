@@ -91,6 +91,7 @@ public class TablePanel extends JPanel {
     
     private void resetValues(){
         this.setValues(this.entries, this.cancelListener);
+        this.tableModel.fireTableDataChanged();
     }
     
     public void addLine(Entry entry){
@@ -105,6 +106,7 @@ public class TablePanel extends JPanel {
             }
             
         }
+        this.tableModel.fireTableDataChanged();
 //        this.printContent();
     }
     
@@ -135,11 +137,9 @@ public class TablePanel extends JPanel {
         }
         try{
             if(index<this.tableModel.getRowCount()){
-
                     this.tableModel.removeRow(index);
+                    this.tableModel.fireTableDataChanged();
                 }
-
-
             }
         catch(IndexOutOfBoundsException e){
             this.resetValues();
