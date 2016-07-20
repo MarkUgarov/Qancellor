@@ -133,15 +133,16 @@ public class TablePanel extends JPanel {
         if(index<this.entries.size()){
             this.entries.remove(index);
         }
+        try{
+            if(index<this.tableModel.getRowCount()){
 
-        if(index<this.tableModel.getRowCount()){
-            try{
-                this.tableModel.removeRow(index);
-            }
-            catch(IndexOutOfBoundsException e){
-                this.resetValues();
-            }
+                    this.tableModel.removeRow(index);
+                }
 
+
+            }
+        catch(IndexOutOfBoundsException e){
+            this.resetValues();
         }
 //        this.printContent();
     }
